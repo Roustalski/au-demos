@@ -1,0 +1,29 @@
+{
+  "name": "aurelia-modular-demo",
+  "version": "0.0.1",
+  "description": "An Aurelia JS port of the ng-demos/modular demo",
+  "main": "src/server/app.js",
+  "scripts": {
+    "test": "gulp test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/Roustalski/au-demos.git"
+  },
+  "keywords": [
+    "aurelia",
+    "modular",
+    "demo",
+    "angular",
+    "port"
+  ],
+  "author": "Russ Watson",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Roustalski/au-demos/issues"
+  },
+  "homepage": "https://github.com/Roustalski/au-demos#readme",
+  "devDependencies": {
+    "jspm": "^0.16.22"
+  }
+}
