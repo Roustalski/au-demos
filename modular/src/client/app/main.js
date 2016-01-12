@@ -3,5 +3,5 @@ export function configure(aurelia) {
         .standardConfiguration()
         .developmentLogging();
 
-    aurelia.start().then(() => aurelia.setRoot("app/[TODO]"));
+    aurelia.start().then(() => aurelia.setRoot("app/greeter/greeter.module"));
 }
