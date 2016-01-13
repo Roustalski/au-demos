@@ -18,6 +18,11 @@ module.exports = {
     doc: './doc',
     e2eSpecsSrc: 'test/e2e/src/*.js',
     e2eSpecsDist: 'test/e2e/dist/',
-    aureliaTypingsSource: appRoot + 'jspm_packages/**/aurelia*/**.d.ts',
+    aureliaTypingsSource: [
+        appRoot + 'jspm_packages/**/aurelia*/**.d.ts',
+        //https://github.com/aurelia/skeleton-navigation/blob/master/skeleton-typescript/typings/aurelia-protractor.d.ts
+        //Note: The aurelia-protractor isn't in any of the DEV packages, so copy this file directly into your typings folder
+        typingsRoot + 'aurelia-protractor.d.ts'
+    ],
     aureliaTypingsDest: typingsRoot + 'aurelia/'
 };
