@@ -1,4 +1,4 @@
-var appRoot = 'src/';
+var appRoot = 'src/client/';
 var outputRoot = 'dist/';
 var exportSrvRoot = 'export/';
 
