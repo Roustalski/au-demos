@@ -1,5 +1,7 @@
 {
+    "esnext": true,
     "excludeFiles": [
+        "src/client/config.js",
         "dist/**",
         "node_modules/**",
         "bower_components/**"
@@ -20,8 +22,8 @@
         "allowComments": true,
         "allowRegex": true
     },
-    "validateIndentation": 4,
-    "validateQuoteMarks": "'",
+    "validateIndentation": false,
+    "validateQuoteMarks": false,
     "disallowMixedSpacesAndTabs": true,
     "disallowTrailingWhitespace": true,
     "disallowSpaceAfterPrefixUnaryOperators": true,
