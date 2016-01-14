@@ -1,4 +1,4 @@
-import {LogManager, inject, noView} from 'aurelia-framework';
+import {LogManager, inject} from 'aurelia-framework';
 import {Settings} from 'app-settings';
 import 'toastr';
 
@@ -8,7 +8,6 @@ var logger = null;
  * A generic logging service that will log out to the browser's console, but also provide a toast to the user.
  */
 @inject(Settings)
-@noView
 export class Log {
 
     constructor(settings) {
