@@ -11,15 +11,18 @@ System.config({
     ]
   },
   paths: {
-    "core:*": "app/core/*",
     "github:*": "jspm_packages/github/*",
     "npm:*": "jspm_packages/npm/*"
   },
 
   map: {
-    "app-settings": "core:settings",
+    "app-exception-handler": "app/blocks/exception/unhandled.exception.handler",
+    "app-exception-provider": "app/blocks/exception/unhandled.exception.provider",
+    "app-log": "app/blocks/log/log.module",
+    "app-settings": "app/core/settings",
     "aurelia-animator-css": "npm:aurelia-animator-css@1.0.0-beta.1.0.3",
     "aurelia-bootstrapper": "npm:aurelia-bootstrapper@1.0.0-beta.1.0.2",
+    "aurelia-event-aggregator": "npm:aurelia-event-aggregator@1.0.0-beta.1",
     "aurelia-fetch-client": "npm:aurelia-fetch-client@1.0.0-beta.1.0.2",
     "aurelia-framework": "npm:aurelia-framework@1.0.0-beta.1.0.8",
     "aurelia-history-browser": "npm:aurelia-history-browser@1.0.0-beta.1.0.1",
@@ -37,6 +40,7 @@ System.config({
     "font-awesome": "npm:font-awesome@4.5.0",
     "jquery": "npm:jquery@2.2.0",
     "moment": "npm:moment@2.11.1",
+    "slorber/ajax-interceptor": "github:slorber/ajax-interceptor@master",
     "text": "github:systemjs/plugin-text@0.0.3",
     "toastr": "github:CodeSeven/toastr@2.1.2",
     "github:CodeSeven/toastr@2.1.2": {

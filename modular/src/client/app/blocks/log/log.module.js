@@ -13,17 +13,15 @@ export class Log {
 
     constructor(settings) {
         logger = LogManager.getLogger(settings.app.prefix);
-        this.error('test what some message looks like against the data object', {someObj: 'LULZ'}, 'Some title');
-        this.info("test");
-        this.success("test");
-        this.warning("test");
     }
 
     /**
      * Invoke the Aurelia logger and toastr error methods with the provided message, data object, and title
      */
-    error(message, data, title) {
-        toastr.error(message, title);
+    error(message, data, title, toastUser = true) {
+        if ( toastUser ) {
+            toastr.error(message, title);
+        }
         logger.error(`Error: ${message};`, data);
     }
 
