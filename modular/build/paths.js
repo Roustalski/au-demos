@@ -16,8 +16,8 @@ module.exports = {
     output: outputRoot,
     exportSrv: exportSrvRoot,
     doc: './doc',
-    e2eSpecsSrc: 'test/e2e/src/*.js',
-    e2eSpecsDist: 'test/e2e/dist/',
+    e2eSpecsSrc: 'src/client/test/e2e/src/*.js',
+    e2eSpecsDist: 'src/client/test/e2e/dist/',
     aureliaTypingsSource: [
         appRoot + 'jspm_packages/**/aurelia*/**.d.ts',
         //https://github.com/aurelia/skeleton-navigation/blob/master/skeleton-typescript/typings/aurelia-protractor.d.ts
