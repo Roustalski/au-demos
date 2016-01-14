@@ -5,7 +5,7 @@ module.exports = function(config) {
   config.set({
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
-    basePath: '',
+    basePath: 'src/client/',
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
@@ -13,7 +13,7 @@ module.exports = function(config) {
 
     jspm: {
       // Edit this to your needs
-      loadFiles: ['src/**/*.js', 'src/client/test/unit/**/*.js'],
+      loadFiles: ['app/**/*.js', 'test/unit/**/*.js'],
       paths: {
         '*': '*',
         'github:*': 'jspm_packages/github/*',
@@ -25,14 +25,13 @@ module.exports = function(config) {
     files: [],
 
     // list of files to exclude
-    exclude: ['src/client/jspm_packages/**'],
-
+    exclude: [],
 
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-      'src/client/test/**/*.js': ['babel'],
-      'src/client/**/*.js': ['babel']
+      'test/**/*.js': ['babel'],
+      'app/**/*.js': ['babel']
     },
     'babelPreprocessor': {
       options: {
