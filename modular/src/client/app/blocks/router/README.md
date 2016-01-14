@@ -1,0 +1,1 @@
+Note that a router helper is not needed as Aurelia gives us the user's navigation history out of the box and the window's title is also handled by Aurelia's router configuration.
