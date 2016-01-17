@@ -15,23 +15,23 @@ export class UnhandledExceptionProvider {
         this.settings = settings;
 
         window.addEventListener('error', (errorEvent) => {
-            this.error(null, errorEvent.error);
+            this.error(errorEvent.error);
         });
 
         AjaxInterceptor.addResponseCallback((xhr) => {
             if (xhr.status === 500) {
                 let msg = `${xhr.statusCode} - ${xhr.statusText} \r ${xhr.responseText}`
-                this.error(null, msg);
+                this.error(msg);
             }
             if (xhr.status === 0) {
                 let msg = `XMLHttpRequest request cancelled by browser (status code 0). See console for details.`
-                this.error(null, msg);
+                this.error(msg);
             }
         });
         AjaxInterceptor.wire();
     }
 
-    error(logger, message) {
+    error(message) {
         this.eventAggregator.publish(this.settings.app.unhandledExceptionEvent, message);
     }
 }
