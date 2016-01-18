@@ -2,6 +2,7 @@ import {UnhandledExceptionProvider} from 'app-exception-provider';
 import {UnhandledExceptionHandler} from 'app-exception-handler';
 import {EventAggregator} from 'aurelia-event-aggregator';
 import {Settings} from 'app-settings';
+import {Log} from 'app-log';
 
 // Dummy out XMLHttpRequest sends in order to test the AJAX interceptor
 var httpSend = XMLHttpRequest.prototype.send;
@@ -9,24 +10,24 @@ XMLHttpRequest.prototype.send = function () { };
 import AjaxInterceptor from 'slorber/ajax-interceptor';
 
 describe('blocks.exception', () => {
+    let s = new Settings();
 
     describe('provider', () => {
-        let mocks, ea, s, provider;
+        let mocks, provider;
+        let ea = new EventAggregator();
 
         it('should be defined', () => {
             expect(UnhandledExceptionProvider).toBeDefined();
         });
 
         beforeEach(() => {
-            ea = new EventAggregator();
-            s = new Settings();
             provider = new UnhandledExceptionProvider(ea, s);
             mocks = {
                 handler: function (error) { }
             };
 
             spyOn(mocks, 'handler');
-            ea.subscribe(s.app.unhandledExceptionEvent, mocks.handler);
+            ea.subscribeOnce(s.app.unhandledExceptionEvent, mocks.handler);
         });
 
         afterEach(() => {
@@ -56,8 +57,22 @@ describe('blocks.exception', () => {
     })
 
     describe('handler', () => {
+
+        let ea = new EventAggregator();
+        let log = new Log(s);
+        let handler = new UnhandledExceptionHandler(ea, log, s);
+
+        beforeEach(() => {
+            spyOn(handler, 'errorHandler').and.callThrough();
+        });1
+
         it('should be defined', () => {
             expect(UnhandledExceptionHandler).toBeDefined();
+        });
+
+        it('should handle provider errors', () => {
+            ea.publish(s.app.unhandledExceptionEvent, "Alright Alright");
+            expect(handler.errorHandler).toHaveBeenCalled();
         });
     });
 
