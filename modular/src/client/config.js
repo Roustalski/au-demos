@@ -16,6 +16,7 @@ System.config({
   },
 
   map: {
+    "app-data-service": "app/core/dataservice",
     "app-exception-handler": "app/blocks/exception/unhandled.exception.handler",
     "app-exception-provider": "app/blocks/exception/unhandled.exception.provider",
     "app-log": "app/blocks/log/log.module",
