@@ -1,5 +1,6 @@
 import {UnhandledExceptionProvider} from 'app-exception-provider';
 import {UnhandledExceptionHandler} from 'app-exception-handler';
+import 'toastr';
 
 export function configure(aurelia) {
 
@@ -16,7 +17,9 @@ export function configure(aurelia) {
         aurelia.container.get(UnhandledExceptionProvider);
         aurelia.container.get(UnhandledExceptionHandler);
 
-        //aurelia.loader.loadModule('app-log');
-        //aurelia.setRoot('app/blocks/log/log.module');
+        aurelia.setRoot('app/layout/shell');
     });
+
+    toastr.options.timeOut = 4000;
+    toastr.options.positionClass = 'toast-bottom-right';
 };
