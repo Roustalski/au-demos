@@ -1,0 +1,42 @@
+<template bindable="router">
+    <nav class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+        <div class="navbar-header">
+            <button type="button" class="btn navbar-btn navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle Navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">
+                <i class="fa fa-home"></i>
+                <span>${router.title}</span>
+            </a>
+        </div>
+
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li repeat.for="row of router.navigation" class="${row.isActive ? 'active' : ''}">
+                    <a data-toggle="collapse" data-target=".navbar-collapse.in" href.bind="row.href">${row.title}</a>
+                </li>
+            </ul>
+            <div class="pull-right navbar-logo">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="https://github.com/Roustalski/au-demos" target="_blank">Ported by Russ Watson.</a>
+                    </li>
+                    <li class="dropdown dropdown-big">
+                        <a href="http://aurelia.io" target="_blank">
+                            <img src="content/images/aurelia-logo-high-res.png" alt="Aurelia"/>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://developer.marvel.com/" target="_blank">Marvel API</a>
+                    </li>
+                    <li class="loader" if.bind="router.isNavigating">
+                        <i class="fa fa-spinner fa-spin fa-2x"></i>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</template>

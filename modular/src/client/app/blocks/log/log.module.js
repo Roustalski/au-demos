@@ -37,7 +37,7 @@ export class Log {
      */
     success(message, data, title) {
         toastr.success(message, title);
-        logger.info(`Success: ${message};`, data);
+        logger.info(`Success: ${message};`, data ? data : null);
     }
 
     /**
