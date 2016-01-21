@@ -1,6 +1,7 @@
 import {UnhandledExceptionProvider} from 'app-exception-provider';
 import {UnhandledExceptionHandler} from 'app-exception-handler';
 import 'toastr';
+import 'bootstrap';
 
 export function configure(aurelia) {
 

@@ -1,13 +1,15 @@
-<template>
+<template class="sidebar">
     <div class="sidebar-filler"></div>
     <div class="sidebar-dropdown"><a href="#">Menu</a></div>
     <div class="sidebar-inner">
         <div class="sidebar-widget"></div>
         <ul class="navi">
             <!--nlightblue fade-selection-animation-->
-            <li repeat.for="row of router.navigation" class="${row.isActive ? 'current' : ''}">
+            <li repeat.for="row of router.navigation" class="nlightblue fade-selection-animation ${row.isActive ? 'current' : ''}">
                 <!--data-toggle="collapse" data-target=".navbar-collapse.in"-->
-                <a href.bind="row.href">${row.title}</a>
+                <a href.bind="row.href">
+                    <i class="${row.config.icon}"></i> ${row.title}
+                </a>
             </li>
         </ul>
     </div>
