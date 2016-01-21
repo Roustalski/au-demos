@@ -14,15 +14,10 @@
         </div>
 
         <div class="collapse navbar-collapse">
-            <ul class="nav navbar-nav">
-                <li repeat.for="row of router.navigation" class="${row.isActive ? 'active' : ''}">
-                    <a data-toggle="collapse" data-target=".navbar-collapse.in" href.bind="row.href">${row.title}</a>
-                </li>
-            </ul>
             <div class="pull-right navbar-logo">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="https://github.com/Roustalski/au-demos/tree/master/modular" target="_blank">Ported by Russ Watson.</a>
+                        <a href="https://github.com/Roustalski/au-demos/tree/master/modular" target="_blank">Ported by Russ Watson</a>
                     </li>
                     <li class="dropdown dropdown-big">
                         <a href="http://aurelia.io" target="_blank">

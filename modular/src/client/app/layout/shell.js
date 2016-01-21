@@ -1,35 +1,20 @@
 import {inject} from 'aurelia-framework'
 import {Log} from 'app-log';
 import {Settings} from 'app-settings';
+import {RouterConfig} from './router.config';
 
-@inject(Log, Settings)
+@inject(Log, Settings, RouterConfig)
 export class Shell {
 
-    //FIXME: TODO: Locale
-
-    constructor(log, settings) {
+    constructor(log, settings, routerConfig) {
         this.log = log;
         this.settings = settings;
+        this.routerConfig = routerConfig;
     }
 
     configureRouter(config, router) {
         config.title = this.settings.app.title;
-        config.map([
-            {
-                route: ['', 'dashboard'],
-                name: 'dashboard',
-                moduleId: 'dashboard/dashboard.module',
-                nav: true,
-                title: 'Dashboard'
-            },
-            {
-                route: ['avengers'],
-                name: 'avengers',
-                moduleId: 'avengers/avengers.module',
-                nav: true,
-                title: 'Avengers'
-            }
-        ]);
+        config.map(this.routerConfig.routes);
         this.router = router;
     }
 

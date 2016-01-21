@@ -1,10 +1,13 @@
 <template>
     <require from="./nav-bar.html"></require>
+    <require from="./sidebar"></require>
     <require from="bootstrap/css/bootstrap.css"></require>
 
-    <nav-bar router.bind="router"></nav-bar>
-
-    <div class="page-host">
-        <router-view></router-view>
-    </div>
+    <header class="clearfix">
+        <nav-bar router.bind="router"></nav-bar>
+    </header>
+    <section id="content" class="content">
+        <sidebar></sidebar>
+        <router-view class="shuffle-animation"></router-view>
+    </section>
 </template>
