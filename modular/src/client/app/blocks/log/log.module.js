@@ -18,33 +18,41 @@ export class Log {
      * Invoke the Aurelia logger and toastr error methods with the provided message, data object, and title
      */
     error(message, data, title, toastUser = true) {
-        if ( toastUser ) {
-            toastr.error(message, title);
-        }
-        logger.error(`Error: ${message};`, data);
+        _toastUser('error', message, title, toastUser);
+        _executeLogger('error', message, data);
     }
 
     /**
      * Invoke the Aurelia logger and toastr error methods with the provided message, data object, and title
      */
-    info(message, data, title) {
-        toastr.info(message, title);
-        logger.info(`Info: ${message};`, data);
+    info(message, data, title, toastUser = true) {
+        _toastUser('info', message, title, toastUser);
+        _executeLogger('info', message, data);
     }
 
     /**
      * Invoke the Aurelia logger info method and toastr succes method with the provided message, data object, and title
      */
-    success(message, data, title) {
-        toastr.success(message, title);
-        logger.info(`Success: ${message};`, data ? data : null);
+    success(message, data, title, toastUser = true) {
+        _toastUser('success', message, title, toastUser);
+        _executeLogger('info', `Success: ${message}`, data);
     }
 
     /**
      * Invoke the Aurelia logger and toastr error methods with the provided message, data object, and title
      */
-    warning(message, data, title) {
-        toastr.warning(message, title);
-        logger.warn(`Warning: ${message};`, data);
+    warning(message, data, title, toastUser = true) {
+        _toastUser('warning', message, title, toastUser);
+        _executeLogger('warn', message, data);
     }
+}
+
+function _toastUser(method, message, title, shouldToastUser) {
+    if (shouldToastUser) {
+        toastr[method](message, title);
+    }
+}
+
+function _executeLogger(method, message, data) {
+    logger[method].apply(logger, [].concat(message, data ? `;${data}` : ''));
 }
