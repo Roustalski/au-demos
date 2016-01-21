@@ -16,4 +16,10 @@ router.get('/maa', function (req, res, next) {
     res.json(json[0].data.results);
 });
 
+router.options('/maa', function(req, res, next) {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', 'x-requested-with');
+    res.json({this: 'isATest'});
+})
+
 module.exports = router;
