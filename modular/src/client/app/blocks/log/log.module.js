@@ -45,6 +45,10 @@ export class Log {
         _toastUser('warning', message, title, toastUser);
         _executeLogger('warn', message, data);
     }
+
+    debug(message, data) {
+        logger.debug(message, data);
+    }
 }
 
 function _toastUser(method, message, title, shouldToastUser) {
@@ -54,5 +58,5 @@ function _toastUser(method, message, title, shouldToastUser) {
 }
 
 function _executeLogger(method, message, data) {
-    logger[method].apply(logger, [].concat(message, data ? `;${data}` : ''));
+    logger[method].apply(logger, [].concat(message, data ? `; ${data}` : ''));
 }

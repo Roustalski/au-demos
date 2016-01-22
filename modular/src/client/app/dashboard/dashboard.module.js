@@ -15,6 +15,7 @@ export class DashboardModule {
         };
         this.avengersCount = 0;
         this.avengers = [];
+        this.title = 'Avengers Movie Cast';
     }
 
     activate() {

@@ -10,7 +10,7 @@ export class Sidebar {
     }
 
     configureRouter(config, router) {
-        this.log.debug("Whatever man.");
+        this.log.info("Whatever man.");
         config.map(this.routerConfig.routes);
         this.router = router;
     }

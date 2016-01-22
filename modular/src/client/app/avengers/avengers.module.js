@@ -11,7 +11,8 @@ export class AvengersModule {
         this.avengers = [];
     }
 
-    activate() {
+    activate(params, routeConfig) {
+        this.title = routeConfig.title;
         return this.getAvengers().then(() => {
             this.logger.info('Activated Avengers View');
         });
