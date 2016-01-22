@@ -1,20 +1,22 @@
 import {inject, customElement, bindable} from 'aurelia-framework';
+import {VelocityAnimator} from "aurelia/animator-velocity";
 import {EventAggregator} from 'aurelia-event-aggregator';
 import {Log} from 'app-log';
 import * as MinimizeWidge from './widget.minimize.events';
 
 @customElement('widget.panel')
-@inject(EventAggregator, Log, Element)
+@inject(EventAggregator, Log, Element, VelocityAnimator)
 export class PanelWidget {
     @bindable title;
     @bindable subtitle;
     @bindable rightText;
     @bindable allowCollapse;
 
-    constructor(ea, logger, element) {
+    constructor(ea, logger, element, animator) {
         this.ea = ea;
         this.logger = logger;
         this.element = element;
+        this.animator = animator;
 
         this.ea.subscribe(MinimizeWidge.EventTypes.MINIMIZE, context => { this.onMinimize(context) });
         this.ea.subscribe(MinimizeWidge.EventTypes.RESTORE, context => { this.onRestore(context) });
@@ -22,13 +24,27 @@ export class PanelWidget {
         this.isContentHidden = false;
     }
 
+    attached() {
+        this.content = this.element.getElementsByClassName("widget-content")[0];
+        this.logger.debug("WHATA");
+    }
+
     onMinimize(context) {
+        if ( context !== this.title ) {
+            return;
+        }
+
         this.logger.debug(`${context} minimized.`);
-        //this.element.toggle(500);
+        //this.animator.leave(this.content);
+        this.animator.animate(this.content, "slideUp");
     }
 
     onRestore(context) {
+        if ( context !== this.title ) {
+            return;
+        }
+        
         this.logger.debug(`${context} restored.`);
-        //this.element.toggle(500);
+        this.animator.animate(this.content, "slideDown");
     }
 }
