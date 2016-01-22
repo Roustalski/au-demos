@@ -48,15 +48,11 @@
                         </widget.panel>
                     </div>
                     <div class="col-md-6">
-                        <div class="widget wlightblue">
-                            <widget.header title="${news.title}" allow-collapse="true"></widget.header>
-                            <div class="widget-content text-center text-info">
+                        <widget.panel class="widget wlightblue" title="${news.title}" allow-collapse="true">
+                            <template replace-part="widget.content">
                                 <small>${news.description}</small>
-                            </div>
-                            <div class="widget-foot">
-                                <div class="clearfix"></div>
-                            </div>
-                        </div>
+                            </template>
+                        </widget.panel>
                     </div>
                 </div>
             </div>
