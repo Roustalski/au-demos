@@ -9,7 +9,14 @@ export function configure(aurelia) {
 
     aurelia.use
         .standardConfiguration()
-        .developmentLogging();
+        .developmentLogging()
+        .plugin('aurelia/animator-velocity', instance => {
+            instance.options.duration = 200;
+            instance.options.easing = "linear";
+
+            instance.enterAnimation = { properties: "fadeIn", options: { easing: "easeIn", duration: 200 } };
+            instance.leaveAnimation = { properties: "fadeOut", options: { easing: "easeIn", duration: 200 } };
+        });
 
     aurelia.start().then(() => {
         //Register the unhandled exception classes so that the specified dependencies can be injected
