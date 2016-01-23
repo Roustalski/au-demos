@@ -9,6 +9,7 @@ export class AvengersModule {
         this.dataService = dataService;
 
         this.avengers = [];
+        this.filterStr = '';
     }
 
     activate(params, routeConfig) {
