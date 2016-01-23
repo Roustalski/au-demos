@@ -45,6 +45,7 @@ System.config({
     "slorber/ajax-interceptor": "github:slorber/ajax-interceptor@master",
     "text": "github:systemjs/plugin-text@0.0.3",
     "toastr": "github:CodeSeven/toastr@2.1.2",
+    "velocity": "github:julianshapiro/velocity@1.2.3",
     "github:CodeSeven/toastr@2.1.2": {
       "css": "github:systemjs/plugin-css@0.1.20",
       "jquery": "github:components/jquery@2.2.0"

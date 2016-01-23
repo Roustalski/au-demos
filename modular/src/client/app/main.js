@@ -4,6 +4,7 @@ import {inject} from 'aurelia-framework';
 import {HttpClient} from 'aurelia-fetch-client';
 import 'toastr';
 import 'bootstrap';
+import "velocity/velocity.ui";
 
 export function configure(aurelia) {
 
@@ -11,11 +12,11 @@ export function configure(aurelia) {
         .standardConfiguration()
         .developmentLogging()
         .plugin('aurelia/animator-velocity', instance => {
-            instance.options.duration = 200;
+            instance.options.duration = 300;
             instance.options.easing = "linear";
 
-            instance.enterAnimation = { properties: "fadeIn", options: { easing: "easeIn", duration: 200 } };
-            instance.leaveAnimation = { properties: "fadeOut", options: { easing: "easeIn", duration: 200 } };
+            instance.enterAnimation = { properties: "fadeIn", options: { easing: "easeIn", duration: 400 } };
+            instance.leaveAnimation = { properties: "fadeOut", options: { easing: "easeIn", duration: 400 } };
         });
 
     aurelia.start().then(() => {
