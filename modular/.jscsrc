@@ -1,5 +1,7 @@
 {
+    "esnext": true,
     "excludeFiles": [
+        "src/client/config.js",
         "dist/**",
         "node_modules/**",
         "bower_components/**"
@@ -16,12 +18,12 @@
     "requireOperatorBeforeLineBreak": true,
     "requireCamelCaseOrUpperCaseIdentifiers": true,
     "maximumLineLength": {
-        "value": 80,
+        "value": 120,
         "allowComments": true,
         "allowRegex": true
     },
-    "validateIndentation": 4,
-    "validateQuoteMarks": "'",
+    "validateIndentation": false,
+    "validateQuoteMarks": false,
     "disallowMixedSpacesAndTabs": true,
     "disallowTrailingWhitespace": true,
     "disallowSpaceAfterPrefixUnaryOperators": true,
@@ -76,7 +78,7 @@
     "requireSpaceAfterBinaryOperators": true,
     "requireSpacesInConditionalExpression": true,
     "requireSpaceBeforeBlockStatements": true,
-    "disallowSpacesInsideObjectBrackets": "all",
+    "disallowSpacesInsideObjectBrackets": false,
     "disallowSpacesInsideArrayBrackets": "all",
     "disallowSpacesInsideParentheses": false,
     "disallowMultipleLineBreaks": true,
