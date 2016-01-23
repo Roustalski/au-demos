@@ -18,6 +18,6 @@ export class UnhandledExceptionHandler {
 
     errorHandler(error) {
         //let msg = `${errorEvent.error.message} \r ${errorEvent.error.stack}`;
-        _log.error(_settings.app.unhandledExceptionPrefix, error);
+        _log.error('This is embarassing. An error has occurred and has been logged.', error);
     }
 }
