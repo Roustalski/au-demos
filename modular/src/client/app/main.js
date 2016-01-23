@@ -2,6 +2,7 @@ import {UnhandledExceptionProvider} from 'app-exception-provider';
 import {UnhandledExceptionHandler} from 'app-exception-handler';
 import {inject} from 'aurelia-framework';
 import {HttpClient} from 'aurelia-fetch-client';
+import 'fetch';
 import 'toastr';
 import 'bootstrap';
 import "velocity/velocity.ui";
@@ -31,7 +32,13 @@ export function configure(aurelia) {
         aurelia.container.registerSingleton(HttpClient, HttpClient);
         configureHttpClient(aurelia.container.get(HttpClient));
 
+        console.log("Set Root");
         aurelia.setRoot('app/layout/shell');
+    })
+    //For debugging on Safari - The splash screen would stay up forever and there were no details on why the start promise never resolved.
+    //Tracked it down to not having the fetch polyfill
+    .catch(ex => {
+        console.log(ex);
     });
 
     toastr.options.timeOut = 4000;
