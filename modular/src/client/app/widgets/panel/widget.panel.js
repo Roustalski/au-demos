@@ -25,7 +25,7 @@ export class PanelWidget {
     }
 
     attached() {
-        this.content = this.element.getElementsByClassName("widget-content")[0];
+        this.content = this.element.getElementsByClassName('widget-content')[0];
     }
 
     onMinimize(context) {
