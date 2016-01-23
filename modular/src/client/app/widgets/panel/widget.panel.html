@@ -2,11 +2,9 @@
     <require from="./widget.header.html"></require>
 
     <widget.header title.bind="title" subtitle.bind="subtitle" rightText.bind="rightText" allow-collapse.bind="allowCollapse"></widget.header>
-    <div class="widget-content text-center text-info">
-        <template replaceable part="widget.content">
-            <p>To be replaced with content</p>
-        </template>
-    </div>
+    <template replaceable part="widget.content">
+        <p>To be replaced with content</p>
+    </template>
     <div class="widget-foot">
         <div class="clearfix"></div>
     </div>

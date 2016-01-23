@@ -26,7 +26,6 @@ export class PanelWidget {
 
     attached() {
         this.content = this.element.getElementsByClassName("widget-content")[0];
-        this.logger.debug("WHATA");
     }
 
     onMinimize(context) {
@@ -35,7 +34,6 @@ export class PanelWidget {
         }
 
         this.logger.debug(`${context} minimized.`);
-        //this.animator.leave(this.content);
         this.animator.animate(this.content, "slideUp");
     }
 
@@ -43,7 +41,7 @@ export class PanelWidget {
         if ( context !== this.title ) {
             return;
         }
-        
+
         this.logger.debug(`${context} restored.`);
         this.animator.animate(this.content, "slideDown");
     }

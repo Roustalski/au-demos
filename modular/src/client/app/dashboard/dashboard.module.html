@@ -1,7 +1,7 @@
 <template>
     <require from="../widgets/panel/widget.panel"></require>
 
-    <section id="dashboard-view" class="mainbar">
+    <section id="dashboard-view" class="mainbar au-animate">
         <section class="matter">
             <div class="container">
                 <div class="row">
@@ -30,27 +30,31 @@
                     <div class="col-md-6">
                         <widget.panel class="widget wblue" title="${title}" allow-collapse="true">
                             <template replace-part="widget.content">
-                                <table class="table table-condensed table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Character</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr repeat.for="a of avengers">
-                                            <td>${a.name}</td>
-                                            <td>${a.character}</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                                <div class="widget-content text-center text-info">
+                                    <table class="table table-condensed table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Character</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr repeat.for="a of avengers">
+                                                <td>${a.name}</td>
+                                                <td>${a.character}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </template>
                         </widget.panel>
                     </div>
                     <div class="col-md-6">
                         <widget.panel class="widget wlightblue" title="${news.title}" allow-collapse="true">
                             <template replace-part="widget.content">
-                                <small>${news.description}</small>
+                                <div class="widget-content text-center text-info">
+                                    <small>${news.description}</small>
+                                </div>
                             </template>
                         </widget.panel>
                     </div>
