@@ -2,7 +2,7 @@
   "version": "1.7.3",
   "compileOnSave": false,
   "compilerOptions": {
-    "rootDir": "src/client/",
+    "rootDir": "src/",
     "sourceMap": true,
     "target": "es5",
     "module": "amd",
