@@ -1,8 +1,9 @@
 import {autoinject} from 'aurelia-framework';
 import {RouterConfiguration, Router} from 'aurelia-router';
-import * as core from 'src/client/app/core/module';
-import * as utils from 'src/client/app/utils/module';
+import * as core from '../core/module';
+import * as utils from '../utils/module';
 import {AppRoutes} from './module';
+import {CastModel} from '../../data/types';
 
 @autoinject
 export class Shell {
@@ -52,7 +53,6 @@ export class Shell {
         this._settings = v;
     }
 
-
     // ----------------------------------------
     //
     //  Constructor
@@ -69,6 +69,7 @@ export class Shell {
     }
 
     activate() {
-        //this._logger
+        let cm = /*new CastModel("test-name", "test-character");*/ <CastModel>CastModel.from('{"name": "test-name", "character": "test-character"}');
+        console.log(`WOOOO: ${cm.character}`);
     }
 }
