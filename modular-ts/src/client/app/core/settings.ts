@@ -1,4 +1,4 @@
-export class Settings {
+export default class Settings {
     app = {
         title: 'Aurelia Modular (Typescript) Demo',
         prefix: 'MODULAR-APP-TS',

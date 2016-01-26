@@ -1,6 +1,6 @@
 const _APP_ROOT: string = '..';
 
-export class RouterConfig {
+export default class AppRoutes {
     routes = [
         {
             route: ['', 'dashboard'],

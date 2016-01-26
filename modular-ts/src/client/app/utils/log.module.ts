@@ -1,15 +1,15 @@
 import * as LogManager from 'aurelia-logging';
 import {autoinject} from 'aurelia-framework';
-import {Settings} from '../../core/settings';
+import * as core from 'src/client/app/core/module';
 
 /**
  * A generic logging service that will log out to the browser's console, but also provide a toast to the user.
  */
 @autoinject
-export class Log {
+export default class Log {
     private _logger: LogManager.Logger;
 
-    constructor(settings:Settings) {
+    constructor(settings: core.Settings) {
         this._logger = LogManager.getLogger(settings.app.prefix);
     }
 
