@@ -1,4 +1,5 @@
 import {Aurelia} from 'aurelia-framework';
+import 'toastr';
 
 export function configure(aurelia:Aurelia) {
     aurelia.use

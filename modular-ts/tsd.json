@@ -16,6 +16,12 @@
     },
     "selenium-webdriver/selenium-webdriver.d.ts": {
       "commit": "24e12a7af994afa2226af70fbfae0adc78736a9e"
+    },
+    "toastr/toastr.d.ts": {
+      "commit": "46719185c564694c5583c4b7ad94dbb786ecad46"
+    },
+    "jquery/jquery.d.ts": {
+      "commit": "46719185c564694c5583c4b7ad94dbb786ecad46"
     }
   }
 }
