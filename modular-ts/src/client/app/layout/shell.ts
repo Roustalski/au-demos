@@ -2,9 +2,7 @@ import {autoinject} from 'aurelia-framework';
 import {RouterConfiguration, Router} from 'aurelia-router';
 import * as core from 'src/client/app/core/module';
 import * as utils from 'src/client/app/utils/module';
-import AppRoutes from './app.routes';
-
-import Log = utils.Log;
+import {AppRoutes} from './module';
 
 @autoinject
 export class Shell {
@@ -17,13 +15,13 @@ export class Shell {
     // ----------------------------------------
     //  Logger
     // ----------------------------------------
-    private _logger: Log;
+    private _logger: utils.Log;
 
-    public get logger(): Log {
+    public get logger(): utils.Log {
         return this._logger;
     }
 
-    public set logger(v: Log) {
+    public set logger(v: utils.Log) {
         this._logger = v;
     }
 
@@ -60,7 +58,7 @@ export class Shell {
     //  Constructor
     //
     // ----------------------------------------
-    constructor(log: Log, settings: core.Settings, routerConfig: AppRoutes) {
+    constructor(log: utils.Log, settings: core.Settings, routerConfig: AppRoutes) {
         this.logger = log;
         this.settings = settings;
         this.routerConfig = routerConfig;
