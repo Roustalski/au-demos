@@ -1,2 +1,2 @@
-export {default as Exception} from './exception.module';
-export {default as Log} from './log.module';
+export * from './exception.module';
+export * from './log.module';

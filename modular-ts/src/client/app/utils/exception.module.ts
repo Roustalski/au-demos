@@ -2,7 +2,7 @@ import {autoinject} from 'aurelia-framework';
 import {Log} from './module';
 
 @autoinject
-export default class Exception {
+export class Exception {
     private _logger: Log;
     consructor(log: Log) {
         this._logger = log;
