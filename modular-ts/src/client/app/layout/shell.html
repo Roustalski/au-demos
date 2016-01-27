@@ -1,0 +1,12 @@
+<template>
+    <require from="./nav-bar.html"></require>
+    <require from="./sidebar"></require>
+
+    <header class="clearfix">
+        <nav-bar router.bind="router"></nav-bar>
+    </header>
+    <section id="content" class="content">
+        <sidebar></sidebar>
+        <router-view class="shuffle-animation"></router-view>
+    </section>
+</template>
