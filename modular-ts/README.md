@@ -1,6 +1,6 @@
-#Aurelia JS Modular Demo [Port]
+#Aurelia JS Modular (Typescript Demo) [Port]
 
-The following is a port of the [ng-demos/modular](https://github.com/johnpapa/ng-demos/tree/master/modular) to Aurelia JS.
+The following is a port of the [ng-demos/modular](https://github.com/johnpapa/ng-demos/tree/master/modular) to Aurelia JS using Typescript.
 
 ## Running The App
 
@@ -13,9 +13,9 @@ To run the app, follow these steps.
 git clone git@github.com:Roustalski/au-demos.git [project_location]
 ```
 
-3. Go to the modular folder
+3. Go to the modular-ts folder
   ``` shell
-  cd [project_location]/modular/
+  cd [project_location]/modular-ts/
   ```
 
 4. Install the application dependencies
