@@ -1,0 +1,17 @@
+diff --git a/sample-shell-autoinject.js b/sample-shell-inject.js
+index f4c88cb..2902a25 100644
+--- a/sample-shell-autoinject.js
++++ b/sample-shell-inject.js
+@@ -63,7 +63,7 @@ define(["require", "exports", 'aurelia-framework', '../core/module', '../utils/m
+             this.logger.success(this.settings.app.title + " loaded!");
+         };
+         Shell = __decorate([
+-            aurelia_framework_1.autoinject,
++            aurelia_framework_1.inject(utils.Log, core.Settings, module_1.AppRoutes),
+             __metadata('design:paramtypes', [utils.Log, core.Settings, module_1.AppRoutes])
+         ], Shell);
+         return Shell;
+@@ -71,4 +71,4 @@ define(["require", "exports", 'aurelia-framework', '../core/module', '../utils/m
+     exports.Shell = Shell;
+ });
+
