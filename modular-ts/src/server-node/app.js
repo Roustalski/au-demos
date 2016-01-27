@@ -18,7 +18,7 @@ let bodyParser = require('body-parser');
 //  Constants
 //
 // ----------------------------------------
-const CLIENT_PATH = path.join(__dirname, "..", "client");
+const CLIENT_PATH = path.join(__dirname, "../..", "dist");
 const VIEW_PATH = path.join(__dirname, "views");
 
 // ----------------------------------------
