@@ -24,7 +24,7 @@ To run the app, follow these steps.
   ```
 
 5. Build the application
-``` shell
+  ``` shell
   gulp build
   ```
 
