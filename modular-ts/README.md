@@ -23,6 +23,11 @@ git clone git@github.com:Roustalski/au-demos.git [project_location]
   npm install && jspm install -y
   ```
 
+5. Build the application
+``` shell
+  gulp build
+  ```
+
 5. To run the app, execute the following command:
 
   ```shell
@@ -30,4 +35,4 @@ git clone git@github.com:Roustalski/au-demos.git [project_location]
   ```
 6. Browse to [http://localhost:8080](http://localhost:8080) to see the app.
 
-Alternatively, if you wish to see changes as you make them, run the ```gulp watch``` task in a new console window and browse to [http://localhost:9000](http://localhost:9000).
+7. Aditionally, if you wish to see changes as you make them, run the ```gulp watch``` task in a new console window and browse to [http://localhost:9000](http://localhost:9000). The avengers module will still connect to the server running on :8080.
