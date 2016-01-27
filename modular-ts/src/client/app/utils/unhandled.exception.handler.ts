@@ -1,6 +1,6 @@
 import {autoinject} from 'aurelia-framework';
 import {EventAggregator} from 'aurelia-event-aggregator';
-import {Log} from './module';
+import {Log} from './log.module';
 import {Settings} from '../core/module';
 
 var _log: Log, _settings: Settings;

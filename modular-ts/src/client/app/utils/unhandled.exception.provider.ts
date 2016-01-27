@@ -1,6 +1,6 @@
 import {autoinject} from 'aurelia-framework';
 import {EventAggregator} from 'aurelia-event-aggregator';
-import AjaxInterceptor from 'slorber/ajax-interceptor';
+import * as AjaxInterceptor from 'slorber/ajax-interceptor';
 import {Settings} from '../core/module';
 
 /**

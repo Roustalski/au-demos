@@ -20,16 +20,13 @@ export function configure(aurelia: Aurelia) {
         });
 
     aurelia.start().then(() => {
-        /*
-        //FIXME: The slorber/AjaxIntercepter isn't avaialble here and throwing a runtime error. Huh? Weird.
-
         //Register the unhandled exception classes so that the specified dependencies can be injected
         aurelia.container.registerSingleton(UnhandledExceptionProvider, UnhandledExceptionProvider);
         aurelia.container.registerSingleton(UnhandledExceptionHandler, UnhandledExceptionHandler);
 
         //Create the exception provider and handler so that they can register for uncaught errors
         aurelia.container.get(UnhandledExceptionProvider);
-        aurelia.container.get(UnhandledExceptionHandler);*/
+        aurelia.container.get(UnhandledExceptionHandler);
 
         aurelia.container.registerSingleton(HttpClient, HttpClient);
         configureHttpClient(aurelia.container.get(HttpClient));

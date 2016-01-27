@@ -37,7 +37,7 @@ gulp.task('build-html', function() {
 
 gulp.task('build-static', function() {
     return gulp.src(paths.static)
-        .pipe(print())
+        //.pipe(print())
         .pipe(gulp.dest(paths.outputContent));
 });
 
