@@ -1,11 +1,11 @@
-import {autoinject} from 'aurelia-framework';
+import {inject} from 'aurelia-framework';
 import {RouterConfiguration, Router} from 'aurelia-router';
 import * as core from '../core/module';
 import * as utils from '../utils/module';
 import {AppRoutes} from './module';
 import {CastModel} from '../../data/types';
 
-@autoinject
+@inject(utils.Log, core.Settings, AppRoutes)
 export class Shell {
 
     // ----------------------------------------

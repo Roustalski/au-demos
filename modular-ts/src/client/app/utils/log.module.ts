@@ -1,11 +1,11 @@
 import * as LogManager from 'aurelia-logging';
-import {autoinject} from 'aurelia-framework';
+import {inject} from 'aurelia-framework';
 import * as core from '../core/module';
 
 /**
  * A generic logging service that will log out to the browser's console, but also provide a toast to the user.
  */
-@autoinject
+@inject(core.Settings)
 export class Log {
     private _logger: LogManager.Logger;
 
@@ -18,7 +18,7 @@ export class Log {
      */
     error(message: string, data?: any, title?: string, toastUser: boolean = true) {
         _toastUser('error', message, title, toastUser);
-        _executeLogger('error', message, data);
+        this._executeLogger('error', message, data);
     }
 
     /**
@@ -26,7 +26,7 @@ export class Log {
      */
     info(message: string, data?: any, title?: string, toastUser: boolean = true) {
         _toastUser('info', message, title, toastUser);
-        _executeLogger('info', message, data);
+        this._executeLogger('info', message, data);
     }
 
     /**
@@ -34,7 +34,7 @@ export class Log {
      */
     success(message: string, data?: any, title?: string, toastUser: boolean = true) {
         _toastUser('success', message, title, toastUser);
-        _executeLogger('info', `Success: ${message}`, data);
+        this._executeLogger('info', `Success: ${message}`, data);
     }
 
     /**
@@ -42,12 +42,16 @@ export class Log {
      */
     warning(message: string, data?: any, title?: string, toastUser: boolean = true) {
         _toastUser('warning', message, title, toastUser);
-        _executeLogger('warn', message, data);
+        this._executeLogger('warn', message, data);
     }
 
     debug(message: string, data?: any, title?: string, toastUser: boolean = true) {
         this._logger.debug(message);
         //this._logger.debug(message, data);
+    }
+
+    _executeLogger(method: string, message: string, data: any) {
+        this._logger[method].apply(this._logger, [].concat(message, data ? `; ${data}` : ''));
     }
 }
 
@@ -55,8 +59,4 @@ function _toastUser(method: string, message: string, title: string, shouldToastU
     if (shouldToastUser) {
         toastr[method](message, title);
     }
-}
-
-function _executeLogger(method: string, message: string, data: any) {
-    this._logger[method].apply(this._logger, [].concat(message, data ? `; ${data}` : ''));
 }
