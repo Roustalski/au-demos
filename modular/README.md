@@ -9,9 +9,9 @@ To run the app, follow these steps.
 1. Ensure that the aurelia [tooling dependencies](http://aurelia.io/docs.html#/aurelia/framework/1.0.0-beta.1.0.8/doc/article/getting-started) are installed.
 
 2. Checkout the project
-``` shell
-git clone git@github.com:Roustalski/au-demos.git [project_location]
-```
+  ``` shell
+  git clone git@github.com:Roustalski/au-demos.git [project_location]
+  ```
 
 3. Go to the modular folder
   ``` shell
