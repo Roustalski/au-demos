@@ -1,6 +1,6 @@
 import {autoinject} from 'aurelia-framework';
 import {HttpClient} from 'aurelia-fetch-client';
-import {CastModel} from '../../data/types';
+import {CastModel, CharacterModel} from '../../data/types';
 
 @autoinject
 export class DataService {
@@ -13,13 +13,13 @@ export class DataService {
     // ----------------------------------------
     //  Http Client
     // ----------------------------------------
-    private _http : HttpClient;
+    private _http: HttpClient;
 
-    public get http() : HttpClient {
+    public get http(): HttpClient {
         return this._http;
     }
 
-    public set http(v : HttpClient) {
+    public set http(v: HttpClient) {
         this._http = v;
     }
 
@@ -41,18 +41,18 @@ export class DataService {
     // ----------------------------------------
     //  Get Avengers
     // ----------------------------------------
-    getAvengers():Promise<CastModel[]> {
+    getAvengers(): Promise<CharacterModel[]> {
         return this.http.fetch('api/maa/')
             .then(response => response.json())
             .then((json: Object[]) => {
-                return json.map(cast => CastModel.from(cast))
+                return json.map(character => CharacterModel.from(character))
             });
     }
 
     // ----------------------------------------
     //  Get Avengers Cast
     // ----------------------------------------
-    getAvengersCast():Promise<CastModel[]> {
+    getAvengersCast(): Promise<CastModel[]> {
         return new Promise(resolve => {
             resolve([
                 //Lazy man's way of copying the non-TS code over.
@@ -66,8 +66,16 @@ export class DataService {
                 CastModel.from(JSON.stringify({ name: 'Samuel L. Jackson', character: 'Nick Fury' })),
                 CastModel.from(JSON.stringify({ name: 'Paul Bettany', character: 'Jarvis' })),
                 CastModel.from(JSON.stringify({ name: 'Tom Hiddleston', character: 'Loki' })),
-                CastModel.from(JSON.stringify({ name: 'Clark Gregg', character: 'Agent Phil Coulson' })
-            ]);
+                CastModel.from(JSON.stringify({ name: 'Clark Gregg', character: 'Agent Phil Coulson' }))
+            ])
         });
+    }
+
+    // ----------------------------------------
+    //  Get Avengers Count
+    // ----------------------------------------
+    getAvengersCount(): Promise<number> {
+        return this.getAvengersCast()
+            .then(castList => new Promise(resolve => resolve(castList.length)));
     }
 }

@@ -26,6 +26,14 @@ export class Shell {
         this._logger = v;
     }
 
+    public get sample(): Promise<string> {
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve(JSON.stringify({this: 'isATest'}));
+            }, 1000);
+        })
+    }
+
     // ----------------------------------------
     //  Router Config
     // ----------------------------------------
