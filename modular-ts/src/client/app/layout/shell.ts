@@ -26,25 +26,22 @@ export class Shell {
         this._logger = v;
     }
 
-    public get sample(): Promise<string> {
-        return new Promise((resolve, reject) => {
-            setTimeout(() => {
-                resolve(JSON.stringify({this: 'isATest'}));
-            }, 1000);
-        })
-    }
+    // ----------------------------------------
+    //  Router
+    // ----------------------------------------
+    public router:Router;
 
     // ----------------------------------------
     //  Router Config
     // ----------------------------------------
-    private _routerConfig: AppRoutes;
+    private _appRoutes: AppRoutes;
 
-    public get routerConfig(): AppRoutes {
-        return this._routerConfig;
+    public get appRoutes(): AppRoutes {
+        return this._appRoutes;
     }
 
-    public set routerConfig(v: AppRoutes) {
-        this._routerConfig = v;
+    public set appRoutes(v: AppRoutes) {
+        this._appRoutes = v;
     }
 
 
@@ -66,10 +63,10 @@ export class Shell {
     //  Constructor
     //
     // ----------------------------------------
-    constructor(log: utils.Log, settings: core.Settings, routerConfig: AppRoutes) {
+    constructor(log: utils.Log, settings: core.Settings, appRoutes: AppRoutes) {
         this.logger = log;
         this.settings = settings;
-        this.routerConfig = routerConfig;
+        this.appRoutes = appRoutes;
 
         //When debugging in chrome, this variable gets succesfully created.
         //but, the settings injection is not working via @autoinject
@@ -78,6 +75,8 @@ export class Shell {
 
     configureRouter(config: RouterConfiguration, router: Router) {
         config.title = this.settings.app.title;
+        config.map(this.appRoutes.routes);
+        this.router = router;
     }
 
     activate() {

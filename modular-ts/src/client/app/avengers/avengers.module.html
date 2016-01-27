@@ -1,0 +1,39 @@
+<template>
+    <require from="../widgets/panel/widget.panel"></require>
+    <require from="../core/value-converters/limitTo"></require>
+    <require from="../core/value-converters/filter"></require>
+
+    <section class="mainbar">
+        <section class="matter">
+            <div class="container">
+                <div class="row">
+                    <widget.panel title="${title}" class="widget wblue">
+                        <template replace-part="widget.content">
+                            <div class="widget-content user">
+                                <input value.bind="filterStr & debounce:500" placeholder="Find Avengers by name" type="search" />
+                                <table class="table table-condensed table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th></th>
+                                            <th>Character</th>
+                                            <th>Description</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr repeat.for="c of avengers | filter:'name':filterStr">
+                                            <td><img src="${c.thumbnail.path}.${c.thumbnail.extension}" class="avenger-thumb img-rounded"
+                                                /></td>
+                                            <td><span class="avenger-name">${c.name}</span></td>
+                                            <td>${c.description | limitTo: 300}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </template>
+                    </widget.panel>
+                </div>
+            </div>
+        </section>
+    </section>
+
+</template>

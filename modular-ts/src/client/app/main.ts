@@ -11,7 +11,7 @@ export function configure(aurelia: Aurelia) {
     aurelia.use
         .standardConfiguration()
         .developmentLogging()
-        .plugin('aurelia/animator-velocity', instance => {
+        .plugin('aurelia-animator-velocity', instance => {
             instance.options.duration = 300;
             instance.options.easing = "linear";
 

@@ -19,7 +19,7 @@ var tsProject = typescript.createProject('./tsconfig.json', { typescript: tsc })
 gulp.task('build-system', function() {
     gulp.src(paths.dtsSrc.concat(paths.source))
         .pipe(plumber())
-        .pipe(print())
+        //.pipe(print())
         .pipe(sourcemaps.init({loadMaps: true}))
         .pipe(changed(paths.output, {extension: '.js'}))
         .pipe(typescript(tsProject))
@@ -33,6 +33,12 @@ gulp.task('build-html', function() {
   return gulp.src(paths.html)
     .pipe(changed(paths.output, {extension: '.html'}))
     .pipe(gulp.dest(paths.output));
+});
+
+gulp.task('build-static', function() {
+    return gulp.src(paths.static)
+        .pipe(print())
+        .pipe(gulp.dest(paths.outputContent));
 });
 
 // copies changed css files to the output directory
@@ -49,7 +55,7 @@ gulp.task('build-css', function() {
 gulp.task('build', function(callback) {
   return runSequence(
     'clean',
-    ['build-system', 'build-html', 'build-css'],
+    ['build-system', 'build-static', 'build-html', 'build-css'],
     callback
   );
 });

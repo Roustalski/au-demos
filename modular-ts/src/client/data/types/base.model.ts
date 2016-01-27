@@ -17,7 +17,7 @@ export class BaseModel {
      * constructed with the values of the provided JSON object.
      */
     static from(json): BaseModel {
-        let parsed = JSON.parse(json);
+        let parsed = typeof json === 'string' ? JSON.parse(json) : json;
         //Untype the generation so that we can use the ES6 spread operator without compile errors
         let untyped: any = <any>this;
         let dynamic = new untyped(...Object.keys(parsed).map(key => {return parsed[key]; }));
