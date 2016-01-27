@@ -1,11 +1,11 @@
-import {autoinject} from 'aurelia-framework';
+import {inject} from 'aurelia-framework';
 import {RouterConfiguration, Router} from 'aurelia-router';
 import * as core from '../core/module';
 import * as utils from '../utils/module';
 import {AppRoutes} from './module';
 import {CastModel} from '../../data/types';
 
-@autoinject
+@inject(utils.Log, core.Settings, AppRoutes)
 export class Shell {
 
     // ----------------------------------------
@@ -62,6 +62,10 @@ export class Shell {
         this.logger = log;
         this.settings = settings;
         this.routerConfig = routerConfig;
+
+        //When debugging in chrome, this variable gets succesfully created.
+        //but, the settings injection is not working via @autoinject
+        let blah = new core.Settings();
     }
 
     configureRouter(config: RouterConfiguration, router: Router) {
@@ -69,7 +73,6 @@ export class Shell {
     }
 
     activate() {
-        let cm = /*new CastModel("test-name", "test-character");*/ <CastModel>CastModel.from('{"name": "test-name", "character": "test-character"}');
-        console.log(`WOOOO: ${cm.character}`);
+        this.logger.success(`${this.settings.app.title} loaded!`);
     }
 }
