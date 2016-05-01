@@ -3,11 +3,13 @@ import { HttpClient } from 'aurelia-fetch-client';
 import { Summoner } from './data/models/summoner';
 import { MatchList } from './data/models/match/match-list';
 import { ChampionList } from './data/models/static/champion/list';
+import { Image } from './data/models/static/common/image';
 import 'fetch';
 
 const API_KEY = "";
 const BASE_URL = "https://na.api.pvp.net/api/lol/na/";
 const STATIC_BASE_URL = "https://global.api.pvp.net/api/lol/static-data/na/"
+const IMAGE_BASE_URL = "http://ddragon.leagueoflegends.com/cdn/6.9.1/img/champion/";
 
 @autoinject
 export class RiotApi {
@@ -28,8 +30,12 @@ export class RiotApi {
     //  Public Methods
     //
     // ----------------------------------------
+    getChampionImageSquare(image: Image): string {
+        return `${IMAGE_BASE_URL}${image.full}`;
+    }
+
     getChampionList(): Promise<ChampionList> {
-        return this._http.fetch(this._getRequest(`${STATIC_BASE_URL}v1.2/champion?champData=all`))
+        return this._http.fetch(this._getRequest(`${STATIC_BASE_URL}v1.2/champion?champData=image`))
             .then(response => response.json())
             .then(championListJson => {
                 return ChampionList.fromJson(championListJson);
@@ -85,7 +91,7 @@ export class RiotApi {
      * @returns {string} The operation string with the api key appended.
      */
     private _getRequest(operation: string): string {
-        if ( operation.indexOf('?') > -1 ) return `${operation}&api_key=${API_KEY}`;
+        if ( operation.indexOf('?') > -1 ) return `${operation}&api_key=${API_KEY}`;//?z=${new Date().getTime().toString()}
         return `${operation}?api_key=${API_KEY}`;
     }
 }
