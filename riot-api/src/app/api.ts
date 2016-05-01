@@ -2,10 +2,12 @@ import { autoinject } from 'aurelia-framework';
 import { HttpClient } from 'aurelia-fetch-client';
 import { Summoner } from './data/models/summoner';
 import { MatchList } from './data/models/match/match-list';
+import { ChampionList } from './data/models/static/champion/list';
 import 'fetch';
 
-const API_KEY = "2dde4a41-4108-407f-9eaf-f06627b6f4e9";
+const API_KEY = "";
 const BASE_URL = "https://na.api.pvp.net/api/lol/na/";
+const STATIC_BASE_URL = "https://global.api.pvp.net/api/lol/static-data/na/"
 
 @autoinject
 export class RiotApi {
@@ -17,8 +19,7 @@ export class RiotApi {
     // ----------------------------------------
     constructor(private _http: HttpClient) {
         _http.configure(config => {
-            config.useStandardConfiguration()
-                .withBaseUrl(BASE_URL);
+            config.useStandardConfiguration();
         });
     }
 
@@ -27,11 +28,19 @@ export class RiotApi {
     //  Public Methods
     //
     // ----------------------------------------
+    getChampionList(): Promise<ChampionList> {
+        return this._http.fetch(this._getRequest(`${STATIC_BASE_URL}v1.2/champion?champData=all`))
+            .then(response => response.json())
+            .then(championListJson => {
+                return ChampionList.fromJson(championListJson);
+            });
+    }
+
     // ----------------------------------------
     //  Get Match List
     // ----------------------------------------
     getMatchList(summonerId: string): Promise<MatchList> {
-        return this._http.fetch(this._getRequest(`v2.2/matchlist/by-summoner/${summonerId}`))
+        return this._http.fetch(this._getRequest(`${BASE_URL}v2.2/matchlist/by-summoner/${summonerId}`))
             .then(response => response.json())
             .then(matchListJson => {
                 return MatchList.fromJson(matchListJson);
@@ -48,7 +57,7 @@ export class RiotApi {
      * @returns {Promise<Summoner[]>} Returns a list of <code>Summoner</code> objects
      */
     getSummoners(nameList: string[]): Promise<Summoner[]> {
-        return this._http.fetch(this._getRequest(`v1.4/summoner/by-name/${nameList.join(',')}`))
+        return this._http.fetch(this._getRequest(`${BASE_URL}v1.4/summoner/by-name/${nameList.join(',')}`))
             .then((response: Response) => response.json())
             .then(summoners => {
                 let summonerList: Summoner[] = [];
@@ -76,6 +85,7 @@ export class RiotApi {
      * @returns {string} The operation string with the api key appended.
      */
     private _getRequest(operation: string): string {
+        if ( operation.indexOf('?') > -1 ) return `${operation}&api_key=${API_KEY}`;
         return `${operation}?api_key=${API_KEY}`;
     }
 }
