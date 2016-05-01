@@ -1,7 +1,12 @@
 import {Router, RouterConfiguration} from 'aurelia-router'
+import { HttpClient } from 'aurelia-fetch-client';
+import { autoinject } from 'aurelia-framework';
 
+@autoinject
 export class App {
   router: Router;
+
+  constructor(public http: HttpClient) {}
 
   configureRouter(config: RouterConfiguration, router: Router) {
     config.title = 'League Pro Builds';

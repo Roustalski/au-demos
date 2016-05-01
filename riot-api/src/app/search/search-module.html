@@ -1,3 +1,27 @@
 <template>
-    <p>This is the search module.</p>
+    <form submit.trigger="searchForSummoners()">
+        <input type="text" placeholder="Summoner Name" value.bind="searchText"/>
+    </form>
+    <ul>
+        <li repeat.for="summoner of summonerList">
+            <p>${summoner.id}</p>
+            <p>${summoner.name}</p>
+            <p>${summoner.profileIconId}</p>
+            <p>${summoner.revisionDate}</p>
+            <p>${summoner.summonerLevel}</p>
+        </li>
+    </ul>
+    <ul>
+        <li repeat.for="matchReference of matchList.matches">
+            <p>${matchReference.champion}</p>
+            <p>${matchReference.lane}</p>
+            <p>${matchReference.matchId}</p>
+            <p>${matchReference.platformId}</p>
+            <p>${matchReference.queue}</p>
+            <p>${matchReference.region}</p>
+            <p>${matchReference.role}</p>
+            <p>${matchReference.season}</p>
+            <p>${matchReference.timestamp}</p>
+        </li>
+    </ul>
 </template>
