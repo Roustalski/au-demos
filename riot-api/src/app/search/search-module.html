@@ -12,16 +12,8 @@
         </li>
     </ul>
     <ul>
-        <li repeat.for="matchReference of matchList.matches">
-            <p>${matchReference.champion}</p>
-            <p>${matchReference.lane}</p>
-            <p>${matchReference.matchId}</p>
-            <p>${matchReference.platformId}</p>
-            <p>${matchReference.queue}</p>
-            <p>${matchReference.region}</p>
-            <p>${matchReference.role}</p>
-            <p>${matchReference.season}</p>
-            <p>${matchReference.timestamp}</p>
+        <li repeat.for="[champion, matchReference] of matchesByChampion">
+            <img src.bind="getChampionSquareImage(champion)">
         </li>
     </ul>
 </template>

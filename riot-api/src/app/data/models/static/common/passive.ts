@@ -11,7 +11,9 @@ export class Passive {
     public static fromJson(json) {
         let p: Passive = new Passive();
         Object.assign(p, json);
-        p.image = Image.fromJson(json.image);
+        if (json !== undefined) {
+            p.image = Image.fromJson(json.image);
+        }
         return p;
     }
 

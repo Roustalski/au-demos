@@ -9,14 +9,22 @@ import { Champion } from './model';
  */
 export class ChampionList {
 
+    // ----------------------------------------
+    //
+    //  Static Members
+    //
+    // ----------------------------------------
     public static fromJson(json) {
         let cl: ChampionList = new ChampionList();
         //Cool, but need to use static from on champion for conversion
         //TODO: Use reflection for generic parser. This is tedious...
         //cl.data = new Map<string, Champion>(JSON.parse(JSON.stringify([...json.data])));
         cl.data = new Map<string, Champion>();
+        cl.championsById = new Map<number, Champion>();
         Object.keys(json.data).forEach(key => {
-            cl.data.set(key, Champion.fromJson(json.data[key]));
+            let champion: Champion = Champion.fromJson(json.data[key]);
+            cl.data.set(key, champion);
+            cl.championsById.set(champion.id, champion);
         });
         cl.format = json.format;
         cl.type = json.type;
@@ -24,7 +32,14 @@ export class ChampionList {
         return cl;
     }
 
+    // ----------------------------------------
+    //
+    //  Public Properties
+    //
+    // ----------------------------------------
     public data: Map<string, Champion>;
+
+    public championsById: Map<number, Champion>;
 
     public format: string;
 
@@ -33,4 +48,13 @@ export class ChampionList {
     public type: string;
 
     public version: string;
+
+    // ----------------------------------------
+    //
+    //  Public Methods
+    //
+    // ----------------------------------------
+    getChamionBy(id: number): Champion {
+        return this.championsById.get(id);
+    }
 }

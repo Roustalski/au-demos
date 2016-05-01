@@ -11,6 +11,7 @@ export class Recommended {
     public static fromJson(json) {
         let r: Recommended = new Recommended();
         Object.assign(r, json);
+        r.blocks = json.blocks.map(bJson => Block.fromJson(bJson));
         return r;
     }
 
