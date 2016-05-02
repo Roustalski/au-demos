@@ -1,0 +1,21 @@
+<template>
+  <require from="../utils/blur-image"></require>
+
+  <section>
+    <h2 class="fadeIn">${summonerName}</h2>
+    <div class="row au-stagger">
+        <div class="col-sm-6 col-md-3 card-container au-animate" repeat.for="[champion, matchReferences] of matchesByChampion">
+            <div class="card">
+                <canvas class="header-bg" width="250" height="70" blur-image.bind="image"></canvas>
+                <div class="avatar">
+                    <img src.bind="getChampionSquareImage(champion)" crossorigin ref="image"/>
+                </div>
+                <div class="content">
+                    <p class="name"># Games as ${champion.name}: ${matchReferences.length}</p>
+                    <p><a target="_blank" class="btn btn-default" click.trigger="">Builds</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+  </section>
+</template>

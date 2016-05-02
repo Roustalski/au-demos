@@ -1,19 +1,8 @@
 <template>
+    <require from="./results"></require>
+
     <form submit.trigger="searchForSummoners()">
         <input type="text" placeholder="Summoner Name" value.bind="searchText"/>
     </form>
-    <ul>
-        <li repeat.for="summoner of summonerList">
-            <p>${summoner.id}</p>
-            <p>${summoner.name}</p>
-            <p>${summoner.profileIconId}</p>
-            <p>${summoner.revisionDate}</p>
-            <p>${summoner.summonerLevel}</p>
-        </li>
-    </ul>
-    <ul>
-        <li repeat.for="[champion, matchReference] of matchesByChampion">
-            <img src.bind="getChampionSquareImage(champion)">
-        </li>
-    </ul>
+    <search-results></search-results>
 </template>

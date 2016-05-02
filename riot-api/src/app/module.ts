@@ -11,9 +11,10 @@ export class App {
   configureRouter(config: RouterConfiguration, router: Router) {
     config.title = 'League Pro Builds';
     config.map([
-      { route: ['', 'search'], name: 'search',      moduleId: 'app/search/search-module',      nav: true, title: 'Summoner Name Search' },
-      { route: 'users',         name: 'users',        moduleId: 'users',        nav: true, title: 'Github Users' },
-      { route: 'child-router',  name: 'child-router', moduleId: 'child-router', nav: true, title: 'Child Router' }
+      { route: ['', 'why-pro-builds'], name: 'why', moduleId: 'app/why/why-module', title: 'Powerful build mimicker to up your game.' },
+      { route: ['search'], name: 'search', moduleId: 'app/search/search-module', nav: true, title: 'Name your pro.' },
+      { route: ['search/:summonerName/champions'], name: 'summoner-champions', moduleId: 'app/search/champ-results', title: 'TODO: Dynamic title' },
+      { route: ['search/:summonerName/champion/:championName'], name: 'summoner-matches-by-champ', moduleId: 'app/search/matchResults', title: 'TODO: Dynamic title' }
     ]);
 
     this.router = router;
