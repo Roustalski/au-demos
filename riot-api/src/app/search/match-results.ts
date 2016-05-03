@@ -2,35 +2,30 @@ import { autoinject } from 'aurelia-framework';
 import { EventAggregator } from 'aurelia-event-aggregator';
 import { Router, RouteConfig } from 'aurelia-router';
 import { RiotApi } from '../api';
-import { MatchApiEvents } from '../match-api';
+import { MatchApi } from '../match-api';
 import { MatchReference } from '../data/models/match/match-reference';
 import { Champion } from './data/models/static/champion/model';
+import { ChampionResults } from './champ-results';
 
 @autoinject
-export class ChampionResults {
+export class MatchResults extends ChampionResults {
 
     // ----------------------------------------
     //
     //  Public Properties
     //
     // ----------------------------------------
-    public summonerName: string;
+    public championName: string;
 
-    public matchesByChampion: Map<Champion, MatchReference[]>;
-
-    // ----------------------------------------
-    //
-    //  Internal Properties
-    //
-    // ----------------------------------------
+    public matches: MatchReference[];
 
     // ----------------------------------------
     //
     //  Constructor
     //
     // ----------------------------------------
-    constructor(protected _api: RiotApi, protected _router: Router, protected _ea: EventAggregator) {
-        _ea.subscribe(MatchApiEvents.MATCHES_BY_CHAMPION_CALCULATED, (matchesByChampion) => this.onMatchesByChampion(matchesByChampion));
+    constructor(api: RiotApi, router: Router, ea: EventAggregator, private _matchApi: MatchApi) {
+        super(api, router, ea);
     }
 
     // ----------------------------------------
@@ -41,7 +36,8 @@ export class ChampionResults {
     activate(routeParams: any, routeConfig: RouteConfig) {
         return this._api.getSummoners([routeParams.summonerName]).then(summonerList => {
             this.summonerName = summonerList[0].name;
-            routeConfig.navModel.setTitle(this.summonerName);
+            this.championName = routeParams.championName;
+            routeConfig.navModel.setTitle(`${this.summonerName} - ${this.championName}`);
             this._api.getMatchList(summonerList[0].id);
         }).catch(err => {
             this._router.navigateToRoute('search');
@@ -66,7 +62,9 @@ export class ChampionResults {
     //  Internal Methods
     //
     // ----------------------------------------
-    protected onMatchesByChampion(matchesByChampion: Map<Champion, MatchReference[]>) {
-        this.matchesByChampion = matchesByChampion;
+    onMatchesByChampion(matchesByChampion: Map<Champion, MatchReference[]>) {
+        super.onMatchesByChampion(matchesByChampion);
+        let champion: Champion = this._matchApi.championList.getChampionBy(this.championName);
+        this.matches = matchesByChampion.get(champion);
     }
 }

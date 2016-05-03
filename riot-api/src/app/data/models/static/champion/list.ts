@@ -41,6 +41,8 @@ export class ChampionList {
 
     public championsById: Map<number, Champion>;
 
+    public championsByString: Map<string, Champion>;
+
     public format: string;
 
     public keys: Map<string, string>;
@@ -54,7 +56,12 @@ export class ChampionList {
     //  Public Methods
     //
     // ----------------------------------------
-    getChamionBy(id: number): Champion {
-        return this.championsById.get(id);
+    getChampionBy(id: number | string): Champion {
+        if (typeof id === 'string') {
+            return this.championsByString.get(id);
+        } else {
+            return this.championsById.get(id);
+        }
+
     }
 }

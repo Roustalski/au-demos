@@ -1,4 +1,5 @@
 import { autoinject } from 'aurelia-framework';
+import { EventAggregator } from 'aurelia-event-aggregator';
 import { HttpClient } from 'aurelia-fetch-client';
 import { Summoner } from './data/models/summoner';
 import { MatchList } from './data/models/match/match-list';
@@ -11,6 +12,11 @@ const BASE_URL = "https://na.api.pvp.net/api/lol/na/";
 const STATIC_BASE_URL = "https://global.api.pvp.net/api/lol/static-data/na/"
 const IMAGE_BASE_URL = "http://ddragon.leagueoflegends.com/cdn/6.9.1/img/champion/";
 
+export class RiotApiEvents {
+    static RECEIVED_CHAMPION_LIST: string = "api:receivedChampionList"
+    static RECEIVED_MATCH_LIST: string = "api:receivedMatchList"
+};
+
 @autoinject
 export class RiotApi {
 
@@ -19,7 +25,7 @@ export class RiotApi {
     //  Constructor
     //
     // ----------------------------------------
-    constructor(private _http: HttpClient) {
+    constructor(private _http: HttpClient, private _ea: EventAggregator) {
         _http.configure(config => {
             config.useStandardConfiguration();
         });
@@ -34,22 +40,39 @@ export class RiotApi {
         return `${IMAGE_BASE_URL}${image.full}`;
     }
 
+    /**
+     * Get's the static champion list from the Riot API.
+     *
+     * @emits RiotApiEvents.RECEIVED_CHAMPION_LIST
+     * @returns {Promise<ChampionList>}
+     */
     getChampionList(): Promise<ChampionList> {
         return this._http.fetch(this._getRequest(`${STATIC_BASE_URL}v1.2/champion?champData=image`))
             .then(response => response.json())
             .then(championListJson => {
-                return ChampionList.fromJson(championListJson);
+                let championList: ChampionList = ChampionList.fromJson(championListJson);
+                this._ea.publish(RiotApiEvents.RECEIVED_CHAMPION_LIST, championList);
+                return championList;
             });
     }
 
     // ----------------------------------------
     //  Get Match List
     // ----------------------------------------
+    /**
+     * Get's the match list by summoner from the Riot API.
+     *
+     * @emits RiotApiEvents.RECEIVED_MATCH_LIST
+     * @param {string} summonerId The summoner to fetch the match list for.
+     * @returns {Promise<MatchList>} Returns the MatchList for the provided summonerId.
+     */
     getMatchList(summonerId: string): Promise<MatchList> {
         return this._http.fetch(this._getRequest(`${BASE_URL}v2.2/matchlist/by-summoner/${summonerId}`))
             .then(response => response.json())
             .then(matchListJson => {
-                return MatchList.fromJson(matchListJson);
+                let matchList: MatchList = MatchList.fromJson(matchListJson);
+                this._ea.publish(RiotApiEvents.RECEIVED_MATCH_LIST, matchList);
+                return matchList;
             });
     }
 

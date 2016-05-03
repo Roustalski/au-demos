@@ -1,7 +1,9 @@
 <template>
   <require from="../utils/blur-image"></require>
+  <require from="./search-module"></require>
 
   <section>
+    <search-module></search-module>
     <h2 class="fadeIn">${summonerName}</h2>
     <div class="row au-stagger">
         <div class="col-sm-6 col-md-3 card-container au-animate" repeat.for="[champion, matchReferences] of matchesByChampion">
@@ -12,7 +14,8 @@
                 </div>
                 <div class="content">
                     <p class="name"># Games as ${champion.name}: ${matchReferences.length}</p>
-                    <p><a target="_blank" class="btn btn-default" click.trigger="">Builds</a></p>
+                    <p>TODO: Win Percentage with champ?</p>
+                    <p><a target="_blank" class="btn btn-default" click.trigger="showChampionMatches(champion)">Builds</a></p>
                 </div>
             </div>
         </div>

@@ -14,7 +14,7 @@ export class App {
       { route: ['', 'why-pro-builds'], name: 'why', moduleId: 'app/why/why-module', title: 'Powerful build mimicker to up your game.' },
       { route: ['search'], name: 'search', moduleId: 'app/search/search-module', nav: true, title: 'Name your pro.' },
       { route: ['search/:summonerName/champions'], name: 'summoner-champions', moduleId: 'app/search/champ-results', title: 'TODO: Dynamic title' },
-      { route: ['search/:summonerName/champion/:championName'], name: 'summoner-matches-by-champ', moduleId: 'app/search/matchResults', title: 'TODO: Dynamic title' }
+      { route: ['search/:summonerName/champion/:championName'], name: 'summoner-matches-by-champ', moduleId: 'app/search/match-results', title: 'TODO: Dynamic title' }
     ]);
 
     this.router = router;
