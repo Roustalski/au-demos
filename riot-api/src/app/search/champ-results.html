@@ -5,6 +5,7 @@
   <section>
     <search-module></search-module>
     <h2 class="fadeIn">${summonerName}</h2>
+    <p if.bind="matchesByChampion === undefined">There are no recent matches for this summoner.</p>
     <div class="row au-stagger">
         <div class="col-sm-6 col-md-3 card-container au-animate" repeat.for="[champion, matchReferences] of matchesByChampion">
             <div class="card">

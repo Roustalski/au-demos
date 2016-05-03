@@ -9,7 +9,9 @@ export class MatchList {
     public static fromJson(json): MatchList {
         let matchList = new MatchList();
         matchList.endIndex = json.endIndex;
-        matchList.matches = json.matches.map(matchReference => MatchReference.fromJson(matchReference));
+        if (Array.isArray(json.matches)) {
+            matchList.matches = json.matches.map(matchReference => MatchReference.fromJson(matchReference));
+        }
         matchList.startIndex = json.startIndex;
         matchList.totalGames = json.totalGames;
         return matchList;
