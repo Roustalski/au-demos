@@ -17,6 +17,8 @@ export class MatchResults extends ChampionResults {
     // ----------------------------------------
     public championName: string;
 
+    public champion: Champion;
+
     public matches: MatchReference[];
 
     // ----------------------------------------
@@ -46,25 +48,13 @@ export class MatchResults extends ChampionResults {
 
     // ----------------------------------------
     //
-    //  Public Methods
-    //
-    // ----------------------------------------
-    showChampionMatches(champion: Champion) {
-        this._router.navigateToRoute("summoner-matches-by-champ", { summonerName: this.summonerName, championName: champion.name }, { trigger: true });
-    }
-
-    getChampionSquareImage(champion: Champion): string {
-        return this._api.getChampionImageSquare(champion.image)
-    }
-
-    // ----------------------------------------
-    //
     //  Internal Methods
     //
     // ----------------------------------------
     onMatchesByChampion(matchesByChampion: Map<Champion, MatchReference[]>) {
         super.onMatchesByChampion(matchesByChampion);
         let champion: Champion = this._matchApi.championList.getChampionBy(this.championName);
+        this.champion = champion;
         this.matches = matchesByChampion.get(champion);
     }
 }

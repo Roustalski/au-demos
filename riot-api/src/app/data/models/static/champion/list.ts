@@ -21,10 +21,12 @@ export class ChampionList {
         //cl.data = new Map<string, Champion>(JSON.parse(JSON.stringify([...json.data])));
         cl.data = new Map<string, Champion>();
         cl.championsById = new Map<number, Champion>();
+        cl.championsByString = new Map<string, Champion>();
         Object.keys(json.data).forEach(key => {
             let champion: Champion = Champion.fromJson(json.data[key]);
             cl.data.set(key, champion);
             cl.championsById.set(champion.id, champion);
+            cl.championsByString.set(champion.name, champion);
         });
         cl.format = json.format;
         cl.type = json.type;

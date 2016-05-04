@@ -1,3 +1,142 @@
 <template>
-    <p>The match results</p>
+    <require from="styles/app/search/match-results.css"></require>
+
+    <section id="matchResults">
+        <p>TODO: Layout</p>
+        <div class="row au-stagger">
+            <div class="col-sm-12 card-container au-animate" repeat.for="matchReference of matches">
+                <div class="Box ItemBuild">
+                    <div class="Title">Item Build</div>
+                    <div class="ContentWrap">
+                        <div class="Content">
+                            <ul class="ItemBuilds">
+                                                        <li class="Step">
+                                        <div class="Bar">
+                                            <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+                                        </div>
+                                        <ol class="Items">
+                                                                                <li class="Item ">
+                                                    <img src="http://sk2.op.gg/images/items/3052_Reverb_Coil.png" class="Image tip __tipped__">
+                                                                                                                                </li>
+                                                                                <li class="Item ">
+                                                    <img src="http://sk2.op.gg/images/items/2009_Mini_Pot.png" class="Image tip __tipped__">
+                                                                                                <div class="Extra"><span>3</span></div>
+                                                                                                                                </li>
+                                                                                <li class="Item ">
+                                                    <img src="http://sk2.op.gg/images/items/3350_GreaterYellowTrinket.png" class="Image tip __tipped__">
+                                                                                                                                </li>
+                                                                        </ol>
+                                        <div class="Time">0minute</div>
+                                    </li>
+                                                        <li class="Step">
+                                        <div class="Bar">
+                                            <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+                                        </div>
+                                        <ol class="Items">
+                                                                                <li class="Item ">
+                                                    <img src="http://sk2.op.gg/images/items/3097_ReaperEmblem.png" class="Image tip __tipped__">
+                                                                                                                                </li>
+                                                                                <li class="Item ">
+                                                    <img src="http://sk2.op.gg/images/items/1001_Boots_of_Speed.png" class="Image tip __tipped__">
+                                                                                                                                </li>
+                                                                                <li class="Item ">
+                                                    <img src="http://sk2.op.gg/images/items/1029_Cloth_Armour.png" class="Image tip __tipped__">
+                                                                                                                                </li>
+                                                                                <li class="Item ">
+                                                    <img src="http://sk2.op.gg/images/items/096_Eye_of_the_Observer.png" class="Image tip __tipped__">
+                                                                                                                                </li>
+                                                                        </ol>
+                                        <div class="Time">7minute</div>
+                                    </li>
+                                                        <li class="Step">
+                                        <div class="Bar">
+                                            <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+                                        </div>
+                                        <ol class="Items">
+                                                                                <li class="Item ">
+                                                    <img src="http://sk2.op.gg/images/items/3047_Phase_Striders.png" class="Image tip __tipped__">
+                                                                                                                                </li>
+                                                                        </ol>
+                                        <div class="Time">10minute</div>
+                                    </li>
+                                                        <li class="Step">
+                                        <div class="Bar">
+                                            <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+                                        </div>
+                                        <ol class="Items">
+                                                                                <li class="Item ">
+                                                    <img src="http://sk2.op.gg/images/items/1033_Elementium_Threaded_Cloak.png" class="Image tip __tipped__">
+                                                                                                                                </li>
+                                                                                <li class="Item ">
+                                                    <img src="http://sk2.op.gg/images/items/1028_RubyCrystal.png" class="Image tip __tipped__">
+                                                                                                                                </li>
+                                                                        </ol>
+                                        <div class="Time">12minute</div>
+                                    </li>
+                                                        <li class="Step">
+                                        <div class="Bar">
+                                            <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+                                        </div>
+                                        <ol class="Items">
+                                                                                <li class="Item ">
+                                                    <img src="http://sk2.op.gg/images/items/3211_SpectresCowl.png" class="Image tip __tipped__">
+                                                                                                                                </li>
+                                                                                <li class="Item ">
+                                                    <img src="http://sk2.op.gg/images/items/1027_Sapphire_Sphere.png" class="Image tip __tipped__">
+                                                                                                                                </li>
+                                                                                <li class="Item ">
+                                                    <img src="http://sk2.op.gg/images/items/1029_Cloth_Armour.png" class="Image tip __tipped__">
+                                                                                                                                </li>
+                                                                        </ol>
+                                        <div class="Time">15minute</div>
+                                    </li>
+                                                        <li class="Step">
+                                        <div class="Bar">
+                                            <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+                                        </div>
+                                        <ol class="Items">
+                                                                                <li class="Item ">
+                                                    <img src="http://sk2.op.gg/images/items/3024_Glacial_Shroud.png" class="Image tip __tipped__">
+                                                                                                                                </li>
+                                                                                <li class="Item ">
+                                                    <img src="http://sk2.op.gg/images/items/2049_Sightstone.png" class="Image tip __tipped__">
+                                                                                                                                </li>
+                                                                                <li class="Item ">
+                                                    <img src="http://sk2.op.gg/images/items/3363_OracleRedTrinket.png" class="Image tip __tipped__">
+                                                                                                                                </li>
+                                                                                <li class="Item ">
+                                                    <img src="http://sk2.op.gg/images/items/1028_RubyCrystal.png" class="Image tip __tipped__">
+                                                                                                                                </li>
+                                                                        </ol>
+                                        <div class="Time">20minute</div>
+                                    </li>
+                                                        <li class="Step">
+                                        <div class="Bar">
+                                            <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+                                        </div>
+                                        <ol class="Items">
+                                                                                <li class="Item ">
+                                                    <img src="http://sk2.op.gg/images/items/3067_Kindlegem.png" class="Image tip __tipped__">
+                                                                                                                                </li>
+                                                                        </ol>
+                                        <div class="Time">22minute</div>
+                                    </li>
+                                                        <li class="Step">
+                                        <div class="Bar">
+                                            <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+                                        </div>
+                                        <ol class="Items">
+                                                                                <li class="Item ">
+                                                    <img src="http://sk2.op.gg/images/items/3065_Spirit_Visage.png" class="Image tip __tipped__">
+                                                                                                                                </li>
+                                                                        </ol>
+                                        <div class="Time">23minute</div>
+                                    </li>
+                                                </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 </template>
